@@ -11,10 +11,18 @@ app = func.FunctionApp()
 
 
 @app.blob_trigger(
-    arg_name="client", path="testing", connection="storageaccountina_STORAGE"
+    arg_name="client", path="bronze", connection="storageaccountina_STORAGE"
 )
 def blob_trigger(client: blob.BlobClient):
-    data = json.loads(client.download_blob().readall().decode("utf-8"))
+    name = client.name
+    if not name.endswith('.json'):
+        return
+        
+    raw = client.download_blob().readall().decode("utf-8")
+    if raw:
+        data = json.loads(raw)
+    else:
+        return
 
     df = pl.DataFrame(flatten_data(data))
 
