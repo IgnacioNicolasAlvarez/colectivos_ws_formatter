@@ -1,19 +1,22 @@
 def flatten_data(json_data):
   """
-  Procesa la lista JSON para generar una lista plana iterable en Python.
+  Process the JSON list to generate a flat iterable list in Python.
 
   Args:
-    json_data: Una lista de diccionarios JSON como la proporcionada.
+    json_data: A list of JSON dictionaries as provided.
 
   Returns:
-    Una lista plana de diccionarios de Python, donde cada diccionario representa una posición
-    e incluye el 'id' del elemento padre.
+    A flat list of Python dictionaries, where each dictionary represents a position
+    and includes the parent element's 'id'.
   """
-  lista_plana = []
-  for elemento in json_data:
-    id_elemento = elemento["id"]
-    for posicion in elemento["ultimas_posiciones"]:
-      posicion_plana = posicion.copy()
-      posicion_plana["id"] = id_elemento
-      lista_plana.append(posicion_plana)
-  return lista_plana
+  flat_list = []
+  for item in json_data:
+    id = item["id"]
+    inserted_at = item["inserted_at"]
+    for position in item["ultimas_posiciones"]:
+      flat_position = position.copy()
+      
+      flat_position["id"] = id
+      flat_position["generated_at"] = inserted_at
+      flat_list.append(flat_position)
+  return flat_list

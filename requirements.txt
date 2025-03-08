@@ -1,8 +1,22 @@
-# DO NOT include azure-functions-worker in this file
-# The Python Worker is managed by Azure Functions platform
-# Manually managing azure-functions-worker may cause unexpected issues
-
-azure-functions
-azurefunctions-extensions-bindings-blob
-deltalake
-polars
+azure-core==1.32.0
+azure-functions==1.21.3
+azure-identity==1.19.0
+azure-storage-blob==12.24.1
+certifi==2025.1.31
+cffi==1.17.1
+charset-normalizer==3.4.1
+cryptography==44.0.2
+deltalake==0.25.4
+idna==3.10
+isodate==0.7.2
+msal==1.31.1
+msal-extensions==1.2.0
+polars==1.24.0
+portalocker==2.10.1
+pyarrow==18.1.0
+pycparser==2.22
+PyJWT==2.10.1
+requests==2.32.3
+six==1.17.0
+typing_extensions==4.12.2
+urllib3==2.3.0
