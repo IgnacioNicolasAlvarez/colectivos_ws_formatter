@@ -14,7 +14,7 @@ app = func.FunctionApp()
 
 
 @app.timer_trigger(
-    schedule="0 1 * * *", arg_name="myTimer", run_on_startup=True, use_monitor=False
+    schedule="0 1 * * *", arg_name="myTimer", run_on_startup=False, use_monitor=False
 )
 def timer_compact_json(myTimer: func.TimerRequest) -> None:
     FROM_CONTAINER = "bronze"
